@@ -46,6 +46,16 @@ services:
     networks:
       - encurtadorUrlKafka_network
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    networks:
+     - encurtadorUrlKafka_network
+
 volumes:
   postgres_data:
     driver: local

@@ -1,5 +1,6 @@
 package com.antony.encurtador.url;
 
+import com.antony.encurtador.user.UserEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,6 +28,10 @@ public class UrlEntity {
     @CreationTimestamp
     @Column(name = "criada_quando", updatable = false)
     private LocalDateTime criadaQuando;
+
+    @ManyToOne
+    @JoinColumn(name = "users_id", nullable = true)
+    private UserEntity users;
 
     public UrlEntity() {
     }
