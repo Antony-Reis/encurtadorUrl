@@ -1,4 +1,4 @@
-package com.antony.encurtador.url;
+package com.antony.encurtador.url.utils;
 
 import java.time.LocalDateTime;
 

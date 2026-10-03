@@ -18,7 +18,7 @@ public class TokenService {
     public String generateToken(String email){
         return Jwts.builder().subject(email).issuedAt(new Date())
                 .expiration(Date.from(LocalDateTime.now().plusHours(24).toInstant(ZoneOffset.of("-03:00"))))
-                .signWith(Keys.hmacShaKeyFor(Secret_Key.getBytes()), Jwts.SIG.HS256)
+                .signWith(Keys.hmacShaKeyFor(Secret_Key.getBytes(StandardCharsets.UTF_8)), Jwts.SIG.HS256)
                 .compact();
     }
 

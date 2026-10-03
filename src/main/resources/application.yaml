@@ -19,6 +19,9 @@ spring:
       host: localhost
       password: ${REDIS_PASSWORD}
       port: 6379
+    web:
+      pageable:
+        serialization-mode: via_dto
 
 
 jwt:

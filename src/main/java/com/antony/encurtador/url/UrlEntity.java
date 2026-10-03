@@ -1,8 +1,10 @@
 package com.antony.encurtador.url;
 
+import com.antony.encurtador.url.utils.EUrlStatusType;
 import com.antony.encurtador.user.UserEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.apache.catalina.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -36,12 +38,12 @@ public class UrlEntity {
     public UrlEntity() {
     }
 
-    public UrlEntity(String urlOriginal, String urlEncurtada, EUrlStatusType status) {
+    public UrlEntity(String urlOriginal, String urlEncurtada, EUrlStatusType status, UserEntity users) {
         this.urlOriginal = urlOriginal;
         this.urlEncurtada = urlEncurtada;
         this.status = status;
+        this.users = users;
     }
-
 
     public Long getId() {
         return id;
@@ -77,5 +79,9 @@ public class UrlEntity {
 
     public void setCriadaQuando(LocalDateTime criadaQuando) {
         this.criadaQuando = criadaQuando;
+    }
+
+    public UserEntity getUsers() {
+        return users;
     }
 }

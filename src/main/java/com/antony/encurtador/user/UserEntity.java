@@ -32,9 +32,9 @@ public class UserEntity implements UserDetails {
     public UserEntity() {
     }
 
-    public UserEntity(String senha, String email) {
-        this.senha = senha;
+    public UserEntity(String email, String senha) {
         this.email = email;
+        this.senha = senha;
     }
 
     public long getId() {

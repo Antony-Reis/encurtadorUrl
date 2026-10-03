@@ -1,4 +1,4 @@
-package com.antony.encurtador.accessed;
+package com.antony.encurtador.metrics;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -6,8 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "accessed")
-public class AccessedEntity {
+@Table(name = "metrics")
+public class MetricsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,10 +19,10 @@ public class AccessedEntity {
     @Column(name = "url_id", nullable = false)
     private long urlId;
 
-    public AccessedEntity() {
+    public MetricsEntity() {
     }
 
-    public AccessedEntity(long urlId, LocalDateTime acessadaQuando) {
+    public MetricsEntity(long urlId, LocalDateTime acessadaQuando) {
         this.urlId = urlId;
         this.acessadaQuando = acessadaQuando;
     }

@@ -1,7 +1,11 @@
 package com.antony.encurtador.url;
 
+import com.antony.encurtador.exceptions.AuthErrorException;
+import com.antony.encurtador.exceptions.NotFoundErrorException;
+import com.antony.encurtador.exceptions.UrlExpiredErrorException;
+import com.antony.encurtador.url.utils.RUrlDto;
+import com.antony.encurtador.url.utils.RUrlResponseDto;
 import jakarta.validation.Valid;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +27,13 @@ public class UrlController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public RUrlResponsePost postUrl(@RequestBody @Valid RUrlDto body) throws BadRequestException, NoSuchAlgorithmException {
+    public RUrlResponseDto postUrl(@RequestBody @Valid RUrlDto body) throws NoSuchAlgorithmException, UrlExpiredErrorException {
         return urlService.postUrl(body);
     }
 
     @GetMapping("{urlEncurtada}")
     @ResponseStatus(HttpStatus.FOUND)
-    public ResponseEntity<Void> getUrl(@PathVariable String urlEncurtada) throws BadRequestException {
+    public ResponseEntity<Void> getUrl(@PathVariable String urlEncurtada) throws NotFoundErrorException {
         String urlOriginal = urlService.getUrl(urlEncurtada);
 
         HttpHeaders headers = new HttpHeaders();
@@ -38,4 +42,8 @@ public class UrlController {
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 
+    @DeleteMapping("{urlEcurtada}")
+    public RUrlResponseDto deleteUrl(@PathVariable String urlEcurtada) throws NotFoundErrorException, AuthErrorException {
+        return urlService.deleteUrl(urlEcurtada);
+    }
 }

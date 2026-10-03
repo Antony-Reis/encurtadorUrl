@@ -1,6 +1,6 @@
 package com.antony.encurtador.config;
 
-import com.antony.encurtador.url.RUrlEventAccessedDto;
+import com.antony.encurtador.url.utils.RUrlEventAccessedDto;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
