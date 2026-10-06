@@ -5,7 +5,6 @@ import com.antony.encurtador.user.IUserRepository;
 import com.antony.encurtador.user.UserEntity;
 import com.antony.encurtador.user.utils.RUserDto;
 import com.antony.encurtador.user.utils.RUserResponseDto;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -23,10 +23,6 @@ public class UserService implements UserDetailsService {
     }
 
     public RUserResponseDto registerUser(RUserDto body) throws ConflictErrorException {
-        if (body.email() == null && body.password() == null){
-            throw new RuntimeException("Email ou senha não podem ser null");
-        }
-
         if (iUserRepository.existsByEmail(body.email())){
             throw new ConflictErrorException("Email");
         }

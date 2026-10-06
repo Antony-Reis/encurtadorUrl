@@ -51,9 +51,4 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         RErrorResponseDto response = new RErrorResponseDto(HttpStatus.BAD_REQUEST, ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
-    @ExceptionHandler(EmailOrPasswordNullErrorException.class)
-    public ResponseEntity<RErrorResponseDto> emailOrPasswordNullErrorException (EmailOrPasswordNullErrorException ex){
-        RErrorResponseDto response = new RErrorResponseDto(HttpStatus.NO_CONTENT, ex.getMessage());
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
-    }
 }
