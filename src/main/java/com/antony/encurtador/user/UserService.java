@@ -33,16 +33,12 @@ public class UserService implements UserDetailsService {
         return new RUserResponseDto(HttpStatus.CREATED, "User registado");
     }
 
-    private UserEntity getAuthenticatedUser() {
+    public UserEntity getAuthenticatedUser() {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         return (UserEntity) authentication.getPrincipal();}
 
     public RUserResponseDto patchPasswordUser(RUserDto body) throws AuthErrorException, NotFoundErrorException {
-        if (body.email() == null && body.password() == null){
-            throw new RuntimeException("Email ou senha não podem ser null");
-        }
-
         if (!iUserRepository.existsByEmail(body.email())){
             throw new NotFoundErrorException("Email");
         }
